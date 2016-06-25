@@ -1,25 +1,131 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xJ2-Q5-aLL">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="6qg-FP-uMI">
+            <objects>
+                <navigationController id="xJ2-Q5-aLL" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="coN-gQ-EG3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Nyo-bp-iXG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h5V-Fu-AiO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="363" y="519"/>
+        </scene>
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="TwitterFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C7n-0K-ztS" customClass="TWTRLogInButton">
+                                <rect key="frame" x="117" y="269" width="87" height="30"/>
+                                <state key="normal" title="Login button"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="C7n-0K-ztS" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ait-dx-Gu1"/>
+                            <constraint firstItem="C7n-0K-ztS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wrH-NZ-lyq"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="jVa-gx-sF0"/>
+                    <connections>
+                        <outlet property="logInButton" destination="C7n-0K-ztS" id="Jbq-yC-YVk"/>
+                        <segue destination="6ZI-Tx-jd1" kind="show" identifier="loginSegue" id="j1o-wT-ntM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="757" y="519"/>
+        </scene>
+        <!--Topic Chooser View Controller-->
+        <scene sceneID="pmZ-p7-CiL">
+            <objects>
+                <viewController id="6ZI-Tx-jd1" customClass="TopicChooserViewController" customModule="TwitterFeed" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="57x-Qw-wYu"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gmj-4i-WUo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="U9G-01-r3v">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Topic" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oqb-R6-LLZ">
+                                <rect key="frame" x="16" y="269" width="288" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="Adn-nN-Gzv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Adn-nN-Gzv"/>
+                                    </mask>
+                                </variation>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="oqb-R6-LLZ" secondAttribute="leading" id="UDT-sn-k59"/>
+                            <constraint firstItem="oqb-R6-LLZ" firstAttribute="centerX" secondItem="U9G-01-r3v" secondAttribute="centerX" id="oiJ-iO-DUY"/>
+                            <constraint firstItem="oqb-R6-LLZ" firstAttribute="centerY" secondItem="U9G-01-r3v" secondAttribute="centerY" id="syO-7H-7jV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oqb-R6-LLZ" secondAttribute="trailing" id="xh1-eG-77H"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="topicField" destination="oqb-R6-LLZ" id="DbQ-pz-HG4"/>
+                        <segue destination="jhE-Nf-qiw" kind="show" identifier="topicChosenSegue" id="VKf-Cs-plH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Id0-6r-Gdj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1148" y="519"/>
+        </scene>
+        <!--Timeline View Controller-->
+        <scene sceneID="rCN-7r-Gl9">
+            <objects>
+                <tableViewController id="jhE-Nf-qiw" customClass="TimelineViewController" customModule="TwitterFeed" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Sfx-iY-3tw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="eG0-Ap-Md3">
+                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eG0-Ap-Md3" id="WuL-fo-9CL">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="jhE-Nf-qiw" id="nGZ-DN-eEA"/>
+                            <outlet property="delegate" destination="jhE-Nf-qiw" id="sgM-su-Vqf"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ngb-CE-CDy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1538" y="519"/>
         </scene>
     </scenes>
 </document>
