@@ -7,20 +7,17 @@
 //
 
 import UIKit
-import TwitterKit
 
 class LoginViewController: UIViewController {
     var username: String?
-
-    @IBOutlet weak var logInButton: TWTRLogInButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        logInButton.logInCompletion = { (session, error) in
+        /*logInButton.logInCompletion = { (session, error) in
             if let unwrappedSession = session {
-                self.username = unwrappedSession.userName
+                self.username = unwrappedSession.userName*/
                 self.performSegueWithIdentifier("loginSegue", sender: nil)
-            } else {
+            /*} else {
                 NSLog("Login error: %@", error!.localizedDescription)
                 let alert = UIAlertController(title: "Login Failed",
                     message: "OAuth failed to authenticate user",
@@ -32,7 +29,7 @@ class LoginViewController: UIViewController {
         }
         
         logInButton.center = self.view.center
-        self.view.addSubview(logInButton)
+        self.view.addSubview(logInButton)*/
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Fabric
-import TwitterKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,14 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        Fabric.with([Twitter.self])
         return true
     }
     
     func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
-        if Twitter.sharedInstance().application(app, openURL:url, options: options) {
-            return true
-        }
+        //if Twitter.sharedInstance().application(app, openURL:url, options: options) {
+            //return true
+        //}
         
         // If you handle other (non Twitter Kit) URLs elsewhere in your app, return true. Otherwise
         return false

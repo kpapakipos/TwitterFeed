@@ -1,0 +1,18 @@
+PODS:
+  - ReachabilitySwift (2.3.3)
+  - Swifter (1.1.4)
+  - SwiftyJSON (2.3.2)
+
+DEPENDENCIES:
+  - ReachabilitySwift
+  - Swifter
+  - SwiftyJSON
+
+SPEC CHECKSUMS:
+  ReachabilitySwift: e0f6b6f280effb47731acfaaa2d5ffe223703793
+  Swifter: a95fe83da8c1161855cb2fa86bbd730e90cabe3a
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+
+PODFILE CHECKSUM: 2b21730dccb4b25b2469df41beeac0c1757d2c59
+
+COCOAPODS: 1.0.1
