@@ -7,24 +7,23 @@
 //
 
 import UIKit
+import SwifteriOS
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let appModel = AppModel()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         return true
     }
     
-    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
-        //if Twitter.sharedInstance().application(app, openURL:url, options: options) {
-            //return true
-        //}
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        Swifter.handleOpenURL(url)
         
-        // If you handle other (non Twitter Kit) URLs elsewhere in your app, return true. Otherwise
-        return false
+        return true
     }
 
     func applicationWillResignActive(application: UIApplication) {

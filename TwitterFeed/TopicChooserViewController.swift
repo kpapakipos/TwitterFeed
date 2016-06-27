@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import SwifteriOS
 
 class TopicChooserViewController: UIViewController, UITextFieldDelegate {
-    var username: String?
-
+    let myAppModel = (UIApplication.sharedApplication().delegate as! AppDelegate).appModel
+    
     @IBOutlet weak var topicField: UITextField!
     
     override func viewDidLoad() {
@@ -28,15 +29,12 @@ class TopicChooserViewController: UIViewController, UITextFieldDelegate {
             self.presentViewController(alert, animated: true, completion: nil)
             return true
         }
+        myAppModel.track = textField.text!
         performSegueWithIdentifier("topicChosenSegue", sender: topicField.text)
         return true
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
-        if segue.identifier == "topicChosenSegue" {
-            (segue.destinationViewController as! TimelineViewController).username = username
-            (segue.destinationViewController as! TimelineViewController).topic = sender as? String
-        }
     }
 }

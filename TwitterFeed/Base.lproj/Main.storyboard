@@ -35,9 +35,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C7n-0K-ztS" customClass="TWTRLogInButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C7n-0K-ztS">
                                 <rect key="frame" x="117" y="269" width="87" height="30"/>
                                 <state key="normal" title="Login button"/>
+                                <connections>
+                                    <action selector="didTouchUpInsideLoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0va-qB-tuJ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -48,7 +51,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="jVa-gx-sF0"/>
                     <connections>
-                        <outlet property="logInButton" destination="C7n-0K-ztS" id="Jbq-yC-YVk"/>
                         <segue destination="6ZI-Tx-jd1" kind="show" identifier="loginSegue" id="j1o-wT-ntM"/>
                     </connections>
                 </viewController>
