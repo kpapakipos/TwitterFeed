@@ -31,7 +31,7 @@ class TweetsTableViewController: UITableViewController {
         isDragging = true
     }
     
-    override func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         isDragging = false
     }
     
@@ -53,15 +53,19 @@ class TweetsTableViewController: UITableViewController {
         return cell
     }
     
-    func reloadTable() {
+    func reloadTable() { //FIXME: loading a large number of tweets quickly causes some serious performance issues
+        guard !isDragging else {
+            return
+        }
         beforeContentSize = tableView.contentSize
         tableView?.reloadData()
-        afterContentSize = tableView.contentSize
-        if tableView.contentOffset == CGPoint(x: 0, y: -64.0) {
+        afterContentSize = CGSize(width: beforeContentSize.width, height: beforeContentSize.height + 100)
+        if tableView.contentOffset == CGPoint(x: 0, y: -64.0) { //if user is at the top of the table, keep them there
             self.tableView.contentInset = UIEdgeInsetsMake(self.topLayoutGuide.length, 0, 0, 0)
             self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(self.topLayoutGuide.length, 0, 0, 0)
         }
-        else {
+            //FIXME: once we get to 200 tweets we start removing old ones, which causes this to not keep the user stationary
+        else { //if user is not at top, scroll down as new tweets are added at the top
             let afterContentOffset = tableView.contentOffset
             tableView.contentOffset = CGPointMake(afterContentOffset.x, afterContentOffset.y + afterContentSize.height - beforeContentSize.height)
         }

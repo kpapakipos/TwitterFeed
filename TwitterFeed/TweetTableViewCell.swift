@@ -14,7 +14,8 @@ class TweetTableViewCell: UITableViewCell {
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var mainTextLabel: UILabel!
+    @IBOutlet weak var handleLabel: UILabel!
+    @IBOutlet weak var mainTextView: UITextView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,7 +24,8 @@ class TweetTableViewCell: UITableViewCell {
     func useTweet() {
         profileImageView.image = tweet.image
         usernameLabel.text = tweet.userName
-        mainTextLabel.text = tweet.text
+        handleLabel.text = tweet.handle
+        mainTextView.text = tweet.text
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

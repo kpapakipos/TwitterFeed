@@ -1,15 +1,12 @@
 PODS:
   - ReachabilitySwift (2.3.3)
-  - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - ReachabilitySwift
-  - SwiftyJSON
 
 SPEC CHECKSUMS:
   ReachabilitySwift: e0f6b6f280effb47731acfaaa2d5ffe223703793
-  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: a40f7458f9629b57739ab2f97f89e088cf566a71
+PODFILE CHECKSUM: 6ae4b92c884d3599e32de95c638ba39800e24c0d
 
 COCOAPODS: 1.0.1

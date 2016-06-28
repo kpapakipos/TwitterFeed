@@ -17,6 +17,9 @@ class TopicChooserViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         topicField.delegate = self
+        let backButton = UIBarButtonItem()
+        backButton.title = "Topic"
+        self.navigationItem.backBarButtonItem = backButton
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
