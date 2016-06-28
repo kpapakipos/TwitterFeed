@@ -31,6 +31,7 @@ class TopicChooserViewController: UIViewController, UITextFieldDelegate {
         }
         myAppModel.track = textField.text!
         performSegueWithIdentifier("topicChosenSegue", sender: topicField.text)
+        myAppModel.startStream()
         return true
     }
 
