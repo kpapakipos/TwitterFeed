@@ -28,8 +28,11 @@ class AppModel: NSObject {
             print("Status: \(status)")
             
             if let json: [String:JSON] = status {
-                if json["text"]?.string != nil {
-                    self.tweets.insert(Tweet(userName: json["text"]?.string, text: json["text"]?.string), atIndex: 0)
+                if json["text"]?.string != nil { //check that it's a tweet
+                    self.tweets.insert(Tweet(userName: json["user"]?["name"].string, text: json["text"]?.string, imageURL: json["user"]?["profile_image_url"].string), atIndex: 0)
+                    if self.tweets.count > 100 {
+                        //self.tweets.removeLast() //prevent memory leak
+                    }
                 }
             }
             

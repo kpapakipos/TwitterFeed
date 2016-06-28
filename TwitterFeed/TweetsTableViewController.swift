@@ -9,15 +9,17 @@
 import UIKit
 import SwifteriOS
 
-class TweetsViewController: UITableViewController {
+class TweetsTableViewController: UITableViewController {
     let myAppModel = (UIApplication.sharedApplication().delegate as! AppDelegate).appModel
     var isDragging = false
-    
-    @IBOutlet var tweetsTableView: UITableView!
+    var beforeContentSize: CGSize!
+    var afterContentSize: CGSize!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadTable), name: "newTweetNotification", object: nil)
+        beforeContentSize = tableView.contentSize
+        afterContentSize = tableView.contentSize
     }
     
     deinit {
@@ -26,20 +28,16 @@ class TweetsViewController: UITableViewController {
     }
     
     override func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        super.scrollViewWillBeginDragging(scrollView)
         isDragging = true
     }
     
     override func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        super.scrollViewDidEndDragging(scrollView, willDecelerate: decelerate)
         isDragging = false
     }
     
     override func viewWillLayoutSubviews()
     {
         super.viewWillLayoutSubviews()
-        self.tableView.contentInset = UIEdgeInsetsMake(self.topLayoutGuide.length, 0, 0, 0)
-        self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(self.topLayoutGuide.length, 0, 0, 0)
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,7 +45,7 @@ class TweetsViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tweetsTableView.dequeueReusableCellWithIdentifier("tweetCell") as! TweetTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("tweetCell") as! TweetTableViewCell
         cell.tweet = myAppModel.tweets[indexPath.row]
         
         cell.useTweet()
@@ -56,6 +54,16 @@ class TweetsViewController: UITableViewController {
     }
     
     func reloadTable() {
-        tweetsTableView?.reloadData()
+        beforeContentSize = tableView.contentSize
+        tableView?.reloadData()
+        afterContentSize = tableView.contentSize
+        if tableView.contentOffset == CGPoint(x: 0, y: -64.0) {
+            self.tableView.contentInset = UIEdgeInsetsMake(self.topLayoutGuide.length, 0, 0, 0)
+            self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(self.topLayoutGuide.length, 0, 0, 0)
+        }
+        else {
+            let afterContentOffset = tableView.contentOffset
+            tableView.contentOffset = CGPointMake(afterContentOffset.x, afterContentOffset.y + afterContentSize.height - beforeContentSize.height)
+        }
     }
 }

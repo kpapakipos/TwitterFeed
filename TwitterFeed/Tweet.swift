@@ -11,11 +11,11 @@ import UIKit
 class Tweet: NSObject {
     var userName: String
     var text: String
-    //var image: UIImage?
+    var image: UIImage
     
-    init(userName: String?, text: String?) {
+    init(userName: String?, text: String?, imageURL: String?) {
         self.userName = userName != nil ? userName! : ""
         self.text = text != nil ? text! : ""
-        //self.image = imageURL?.pictureFromURL
+        self.image = imageURL?.pictureFromURL != nil ? imageURL!.pictureFromURL! : UIImage()
     }
 }
