@@ -25,14 +25,32 @@ class AppModel: NSObject {
         self.tweets = [Tweet]()
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             self.connection = self.swifter.postStatusesFilterWithFollow(nil, track: [self.track], locations: nil, delimited: nil, stallWarnings: nil, filter_level: nil, language: nil, progress: {
-                (status: Dictionary<String, JSONValue>?) in
+                (status: Dictionary<String, JSON>?) in
                 
                 print("Status: \(status)")
                 
                 if let json: [String:JSON] = status {
                     if json["text"]?.string != nil { //check that it's a tweet
                         dispatch_async(dispatch_get_main_queue()) {
-                            self.tweets.insert(Tweet(userName: json["user"]?["name"].string, handle: json["user"]?["screen_name"].string, text: json["text"]?.string, imageURL: json["user"]?["profile_image_url"].string), atIndex: 0)
+                            var image1URL: String? = nil
+                            var image2URL: String? = nil
+                            var image3URL: String? = nil
+                            if let mediaArray = json["extended_entities"]?["media"].array {
+                                for media in mediaArray {
+                                    if media["type"].string == "photo" {
+                                        if image1URL == nil {
+                                            image1URL = media["media_url_https"].string
+                                        }
+                                        else if image2URL == nil {
+                                            image2URL = media["media_url_https"].string
+                                        }
+                                        else if image3URL == nil {
+                                            image3URL = media["media_url_https"].string
+                                        }
+                                    }
+                                }
+                            }
+                            self.tweets.insert(Tweet(userName: json["user"]?["name"].string, handle: json["user"]?["screen_name"].string, text: json["text"]?.string, profileImageURL: json["user"]?["profile_image_url"].string, image1URL: image1URL, image2URL: image2URL, image3URL: image3URL), atIndex: 0)
                             if self.tweets.count > 200 {
                                 self.tweets.removeLast() //prevent memory leak
                             }

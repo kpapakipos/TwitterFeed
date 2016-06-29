@@ -17,6 +17,8 @@ class TweetsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.estimatedRowHeight = 80
+        tableView.rowHeight = UITableViewAutomaticDimension
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadTable), name: "newTweetNotification", object: nil)
         beforeContentSize = tableView.contentSize
         afterContentSize = tableView.contentSize

@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -36,9 +37,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C7n-0K-ztS">
-                                <rect key="frame" x="141" y="269" width="38" height="30"/>
-                                <state key="normal" title="Login"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C7n-0K-ztS">
+                                <rect key="frame" x="54" y="261" width="213" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="rrY-ZX-xhb"/>
+                                    <constraint firstAttribute="width" secondItem="C7n-0K-ztS" secondAttribute="height" multiplier="580:124" id="y5F-Le-XRc"/>
+                                </constraints>
+                                <state key="normal" title="Login" image="loginButton"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="rrY-ZX-xhb"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="didTouchUpInsideLoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0va-qB-tuJ"/>
                                 </connections>
@@ -47,6 +57,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="C7n-0K-ztS" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ait-dx-Gu1"/>
+                            <constraint firstItem="C7n-0K-ztS" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="2:3" id="Gh0-Va-SUE"/>
                             <constraint firstItem="C7n-0K-ztS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wrH-NZ-lyq"/>
                         </constraints>
                     </view>
@@ -106,16 +117,16 @@
         <scene sceneID="hJh-W4-BWu">
             <objects>
                 <tableViewController id="9HD-ks-WFB" customClass="TweetsTableViewController" customModule="TwitterFeed" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="B6o-Wr-ls1">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="140" sectionHeaderHeight="28" sectionFooterHeight="28" id="B6o-Wr-ls1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tweetCell" id="U9z-Zg-zjJ" customClass="TweetTableViewCell" customModule="TwitterFeed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="320" height="100"/>
+                                <rect key="frame" x="0.0" y="92" width="320" height="140"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U9z-Zg-zjJ" id="7zv-qa-YTa">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="139.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vQj-jG-E28">
@@ -146,23 +157,75 @@
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Zcf-2N-LiT">
-                                            <rect key="frame" x="61" y="37" width="251" height="55"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" scrollEnabled="NO" editable="NO" text="Text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Zcf-2N-LiT">
+                                            <rect key="frame" x="61" y="37" width="251" height="16.5"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                         </textView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginButton" translatesAutoresizingMaskIntoConstraints="NO" id="rN5-1c-2HQ">
+                                            <rect key="frame" x="33" y="61" width="70" height="70"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="70" id="Q3Z-HH-ehN"/>
+                                                <constraint firstAttribute="width" secondItem="rN5-1c-2HQ" secondAttribute="height" id="xsX-KX-9G2"/>
+                                                <constraint firstAttribute="width" constant="53.5" id="yrb-f6-wSB"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="yrb-f6-wSB"/>
+                                                </mask>
+                                            </variation>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginButton" translatesAutoresizingMaskIntoConstraints="NO" id="Fe9-eG-fyP">
+                                            <rect key="frame" x="125" y="61" width="70" height="70"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="53.5" id="V3q-3z-ySN"/>
+                                                <constraint firstAttribute="width" constant="70" id="fAr-JX-llP"/>
+                                                <constraint firstAttribute="width" secondItem="Fe9-eG-fyP" secondAttribute="height" id="rcT-ph-USQ"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="V3q-3z-ySN"/>
+                                                </mask>
+                                            </variation>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginButton" translatesAutoresizingMaskIntoConstraints="NO" id="WJN-RH-TT1">
+                                            <rect key="frame" x="217" y="61" width="70" height="70"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="WJN-RH-TT1" secondAttribute="height" id="4ZZ-Ig-qM5"/>
+                                                <constraint firstAttribute="width" constant="53.5" id="Bjv-nW-fB1"/>
+                                                <constraint firstAttribute="width" constant="70" id="Qgv-wZ-fQH"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="Bjv-nW-fB1"/>
+                                                </mask>
+                                            </variation>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="Zcf-2N-LiT" secondAttribute="bottom" id="2nx-s1-6aw"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Zcf-2N-LiT" secondAttribute="trailing" id="3oy-fj-PBb"/>
+                                        <constraint firstItem="Fe9-eG-fyP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rN5-1c-2HQ" secondAttribute="trailing" constant="8" id="7Qr-vs-wug"/>
                                         <constraint firstItem="Zcf-2N-LiT" firstAttribute="leading" secondItem="BlK-vc-aFa" secondAttribute="leading" id="7d2-gW-c3P"/>
+                                        <constraint firstItem="WJN-RH-TT1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Fe9-eG-fyP" secondAttribute="trailing" constant="8" id="AhN-ff-ysb"/>
                                         <constraint firstItem="d3p-8H-hxw" firstAttribute="centerY" secondItem="BlK-vc-aFa" secondAttribute="centerY" id="DyD-0B-kW5"/>
                                         <constraint firstItem="d3p-8H-hxw" firstAttribute="leading" secondItem="BlK-vc-aFa" secondAttribute="trailing" constant="8" id="Mcc-vC-WjU"/>
                                         <constraint firstItem="vQj-jG-E28" firstAttribute="top" secondItem="BlK-vc-aFa" secondAttribute="top" id="O2l-es-naE"/>
+                                        <constraint firstItem="WJN-RH-TT1" firstAttribute="width" secondItem="WJN-RH-TT1" secondAttribute="height" id="Pfs-39-tAH"/>
                                         <constraint firstItem="Zcf-2N-LiT" firstAttribute="leading" secondItem="vQj-jG-E28" secondAttribute="trailing" constant="8" id="SqO-m3-iQy"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Fe9-eG-fyP" secondAttribute="bottom" id="VWe-DW-9wf"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="WJN-RH-TT1" secondAttribute="trailing" constant="25" id="Zdq-Hu-mN6"/>
+                                        <constraint firstItem="rN5-1c-2HQ" firstAttribute="width" secondItem="7zv-qa-YTa" secondAttribute="width" id="bWC-0H-OHd"/>
+                                        <constraint firstItem="Fe9-eG-fyP" firstAttribute="width" secondItem="Fe9-eG-fyP" secondAttribute="height" id="c8d-WI-YRv"/>
                                         <constraint firstItem="vQj-jG-E28" firstAttribute="top" secondItem="7zv-qa-YTa" secondAttribute="topMargin" id="gP7-6u-h8R"/>
+                                        <constraint firstItem="rN5-1c-2HQ" firstAttribute="top" secondItem="Zcf-2N-LiT" secondAttribute="bottom" constant="8" id="i95-ls-12Z"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="WJN-RH-TT1" secondAttribute="bottom" constant="0.5" id="lgg-9x-tzM"/>
+                                        <constraint firstItem="Fe9-eG-fyP" firstAttribute="centerX" secondItem="7zv-qa-YTa" secondAttribute="centerX" id="muN-aE-FBO"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="rN5-1c-2HQ" secondAttribute="bottom" id="nQo-uz-rAY"/>
+                                        <constraint firstItem="WJN-RH-TT1" firstAttribute="width" secondItem="WJN-RH-TT1" secondAttribute="height" id="nlv-oF-8Lf"/>
+                                        <constraint firstItem="rN5-1c-2HQ" firstAttribute="leading" secondItem="7zv-qa-YTa" secondAttribute="leadingMargin" constant="25" id="okG-4x-anz"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="vQj-jG-E28" secondAttribute="bottom" id="puC-dr-bCH"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="vQj-jG-E28" secondAttribute="leading" id="tDd-fA-Mia"/>
                                         <constraint firstItem="Zcf-2N-LiT" firstAttribute="top" secondItem="BlK-vc-aFa" secondAttribute="bottom" constant="8" id="vwh-dg-Pm2"/>
@@ -172,11 +235,19 @@
                                         <mask key="constraints">
                                             <exclude reference="gP7-6u-h8R"/>
                                             <exclude reference="puC-dr-bCH"/>
+                                            <exclude reference="2nx-s1-6aw"/>
+                                            <exclude reference="bWC-0H-OHd"/>
+                                            <exclude reference="c8d-WI-YRv"/>
+                                            <exclude reference="Pfs-39-tAH"/>
+                                            <exclude reference="nlv-oF-8Lf"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="handleLabel" destination="d3p-8H-hxw" id="u48-2F-pc3"/>
+                                    <outlet property="image1View" destination="rN5-1c-2HQ" id="fQa-Y3-jlj"/>
+                                    <outlet property="image2View" destination="Fe9-eG-fyP" id="Cxs-Yr-mP7"/>
+                                    <outlet property="image3View" destination="WJN-RH-TT1" id="dm8-4B-f22"/>
                                     <outlet property="mainTextView" destination="Zcf-2N-LiT" id="Qgx-l9-cWW"/>
                                     <outlet property="profileImageView" destination="vQj-jG-E28" id="O3j-Xq-ITa"/>
                                     <outlet property="usernameLabel" destination="BlK-vc-aFa" id="Grv-Q8-keZ"/>
@@ -194,4 +265,7 @@
             <point key="canvasLocation" x="1542" y="519"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="loginButton" width="290" height="62"/>
+    </resources>
 </document>
